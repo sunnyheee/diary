@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const DiaryEditor = () => {
+  const authorInput = useRef();
+  const authorContent = useRef();
   const [state, setState] = useState({
     author: "",
     content: "",
@@ -14,8 +16,15 @@ const DiaryEditor = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    console.log(state);
+  const handleSubmit = () => {
+    if (state.author.length < 1) {
+      authorInput.current.focus();
+      return;
+    }
+    if (state.content.length < 5) {
+      authorContent.current.focus();
+      return;
+    }
     alert("Success save!");
   };
 
@@ -24,19 +33,24 @@ const DiaryEditor = () => {
       <h2>Today's Diary</h2>
       <div>
         <input
+          ref={authorInput}
           value={state.author}
           onChange={handleChangeState}
           name="author"
+          placeholder="Writer"
         />
       </div>
       <div>
         <textarea
+          ref={authorContent}
           value={state.content}
           onChange={handleChangeState}
           name="content"
+          placeholder="Diary"
         />
       </div>
       <div>
+        Today's emotional score:　
         <select
           name="emotion"
           value={state.emotion}
