@@ -30,7 +30,7 @@ const DiaryItem = ({
       localContentInput.current.focus();
       return;
     }
-    if (window.confirm(`?Do you want to modify the ${id} diary?`)) {
+    if (window.confirm(`Do you want to modify the ${id} diary?`)) {
       onEdit(id, localContent);
       toggleIsEdit();
     }
