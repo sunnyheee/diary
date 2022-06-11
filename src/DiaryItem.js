@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 const DiaryItem = ({
   id,
@@ -9,6 +9,10 @@ const DiaryItem = ({
   onRemove,
   onEdit,
 }) => {
+  useEffect(() => {
+    console.log(`${id}번째어쩌고저쩌고`);
+  }, []);
+
   const [isEdit, setIsEdit] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);
   const [localContent, setLocalContent] = useState(content);
@@ -75,4 +79,4 @@ const DiaryItem = ({
   );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);
