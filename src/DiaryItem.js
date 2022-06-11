@@ -9,10 +9,6 @@ const DiaryItem = ({
   onRemove,
   onEdit,
 }) => {
-  useEffect(() => {
-    console.log(`${id}번째어쩌고저쩌고`);
-  }, []);
-
   const [isEdit, setIsEdit] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);
   const [localContent, setLocalContent] = useState(content);
