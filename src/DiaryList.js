@@ -1,13 +1,17 @@
+import { useContext } from "react";
+import { DiaryStateContext } from "./App";
 import DiaryItem from "./DiaryItem";
 
-const DiaryList = ({ onRemove, diaryList, onEdit }) => {
+const DiaryList = () => {
+  const diaryList = useContext(DiaryStateContext);
+
   return (
     <div className="DiaryList">
       <h2>Diary List</h2>
       <h4>There are {diaryList.length} diaries.</h4>
       <div>
         {diaryList.map((it) => (
-          <DiaryItem key={it.id} {...it} onRemove={onRemove} onEdit={onEdit} />
+          <DiaryItem key={it.id} {...it} />
         ))}
       </div>
     </div>
